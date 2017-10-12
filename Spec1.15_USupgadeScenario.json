@@ -1,0 +1,288 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Spec1.15",
+    "x-lastModified": "Oct 12, 2017 04:13AM PST"
+  },
+  "paths": {
+    "/pet": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "color",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "red"
+          },
+          {
+            "name": "available",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "binary",
+            "default": "1"
+          },
+          {
+            "name": "dob",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "date",
+            "default": "1542-02-14"
+          },
+          {
+            "name": "cookie",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "asdsadasdads"
+          }
+        ],
+        "operationId": "getPet"
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "$ref": "#/definitions/GiveNewSchemaNameHere"
+            },
+            "examples": {
+              "application/json": {
+                "Customer": [
+                  {
+                    "ID": 222,
+                    "CustomerName": "PQR",
+                    "Contact": {
+                      "PersonName": {
+                        "Prefix": "Mr",
+                        "First": "Vivek",
+                        "Middle": "R",
+                        "Last": "Randive",
+                        "Suffix": "Dr"
+                      },
+                      "Phone": "123-456-7890",
+                      "email": "abc@pqr.com",
+                      "Address": [
+                        {
+                          "AddressType": "Main Office",
+                          "Street1": "3303 HillView Avenue",
+                          "Street2": "Near VMware",
+                          "Street3": "Page Mill Road",
+                          "City": "Palo Alto",
+                          "State": "California",
+                          "PostalCode": "41014",
+                          "Country": "USA",
+                          "ModifiedDateTIme": "2012-12-13T12:12:12Z"
+                        }
+                      ]
+                    },
+                    "ModifiedDateTIme": "2012-12-13T12:12:12Z"
+                  },
+                  {
+                    "ID": 111,
+                    "CustomerName": "ABC",
+                    "Contact": {
+                      "PersonName": {
+                        "Prefix": "Mr",
+                        "First": "Steve",
+                        "Middle": "Paul",
+                        "Last": "Jobs",
+                        "Suffix": "Dr"
+                      },
+                      "Phone": "123-456-7890",
+                      "email": "abc@pqr.com",
+                      "Address": [
+                        {
+                          "AddressType": "Main Office",
+                          "Street1": "3303 HillView Avenue",
+                          "Street2": "Near VMware",
+                          "Street3": "Page Mill Road",
+                          "City": "Palo Alto",
+                          "State": "California",
+                          "PostalCode": "41014",
+                          "Country": "USA",
+                          "ModifiedDateTIme": "2012-12-13T12:12:12Z"
+                        }
+                      ]
+                    },
+                    "ModifiedDateTIme": "2012-12-12T12:12:12Z"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "parameters": [],
+        "operationId": "postPet"
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [],
+        "operationId": "putPet"
+      },
+      "patch": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [],
+        "operationId": "patchPet"
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [],
+        "operationId": "deletePet"
+      }
+    }
+  },
+  "definitions": {
+    "GiveNewSchemaNameHere": {
+      "type": "object",
+      "properties": {
+        "Customer": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "ID": {
+                "type": "integer",
+                "default": 111
+              },
+              "CustomerName": {
+                "type": "string",
+                "default": "ABC"
+              },
+              "Contact": {
+                "type": "object",
+                "properties": {
+                  "PersonName": {
+                    "type": "object",
+                    "properties": {
+                      "Prefix": {
+                        "type": "string",
+                        "default": "Mr"
+                      },
+                      "First": {
+                        "type": "string",
+                        "default": "Steve"
+                      },
+                      "Middle": {
+                        "type": "string",
+                        "default": "Paul"
+                      },
+                      "Last": {
+                        "type": "string",
+                        "default": "Jobs"
+                      },
+                      "Suffix": {
+                        "type": "string",
+                        "default": "Dr"
+                      }
+                    }
+                  },
+                  "Phone": {
+                    "type": "string",
+                    "default": "123-456-7890"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "default": "abc@pqr.com"
+                  },
+                  "Address": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "AddressType": {
+                          "type": "string",
+                          "default": "Main Office"
+                        },
+                        "Street1": {
+                          "type": "string",
+                          "default": "3303 HillView Avenue"
+                        },
+                        "Street2": {
+                          "type": "string",
+                          "default": "Near VMware"
+                        },
+                        "Street3": {
+                          "type": "string",
+                          "default": "Page Mill Road"
+                        },
+                        "City": {
+                          "type": "string",
+                          "default": "Palo Alto"
+                        },
+                        "State": {
+                          "type": "string",
+                          "default": "California"
+                        },
+                        "PostalCode": {
+                          "type": "string",
+                          "default": "41014"
+                        },
+                        "Country": {
+                          "type": "string",
+                          "default": "USA"
+                        },
+                        "ModifiedDateTIme": {
+                          "type": "string",
+                          "format": "date-time",
+                          "default": "2012-12-13T12:12:12Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "ModifiedDateTIme": {
+                "type": "string",
+                "format": "date-time",
+                "default": "2012-12-12T12:12:12Z"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
