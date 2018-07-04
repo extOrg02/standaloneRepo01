@@ -1,0 +1,369 @@
+{
+  "definitions": {
+    "API": {
+      "properties": {
+        "appStatus": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "lastModified": {
+          "format": "datetime",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "spec": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "title": "API",
+      "type": "object"
+    },
+    "Path": {
+      "properties": {
+        "apiId": {
+          "type": "integer"
+        },
+        "apiPath": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "methodId": {
+          "type": "integer"
+        },
+        "mockCode": {
+          "type": "string"
+        },
+        "mockMode": {
+          "type": "string"
+        },
+        "responses": {
+          "$ref": "#/definitions/Responses"
+        }
+      },
+      "title": "Path Object",
+      "type": "object"
+    },
+    "Responses": {
+      "title": "Mock Responses",
+      "type": "object"
+    }
+  },
+  "info": {
+    "title": "TIBCO Mock Service API array",
+    "version": "1.0.0",
+    "x-lastModified": "Sep 28, 2017 08:21AM PST"
+  },
+  "paths": {
+    "/apis": {
+      "get": {
+        "description": "Gets `API` objects.\nOptional query param of **api-name** and **version** of returned array\n",
+        "operationId": "getApis",
+        "parameters": [
+          {
+            "description": "Name of API",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Version of API",
+            "in": "query",
+            "name": "version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Status of API mock app",
+            "in": "query",
+            "name": "status",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "examples": [
+              "hello",
+              123,
+              "323"
+            ],
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/API"
+              },
+              "title": "ArrayOfAPI",
+              "type": "array"
+            }
+          }
+        },
+        "summary": "Gets `API` objects.\nOptional query param of **api-name** and **version** of returned array\n"
+      },
+      "post": {
+        "description": "Create `API` object.\n",
+        "operationId": "postApis",
+        "parameters": [
+          {
+            "description": "the API spec in swagger json format",
+            "in": "body",
+            "name": "api",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/API"
+            }
+          }
+        },
+        "summary": "Create `API` object.\n"
+      }
+    },
+    "/apis/{id}": {
+      "delete": {
+        "description": "remove `API` object by ID.\n",
+        "operationId": "deleteApis_id",
+        "parameters": [
+          {
+            "description": "id of api",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "remove `API` object by ID.\n"
+      },
+      "get": {
+        "description": "Gets `API` object by ID.\n",
+        "operationId": "getApis_id",
+        "parameters": [
+          {
+            "description": "id of api",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/API"
+            }
+          }
+        },
+        "summary": "Gets `API` object by ID.\n"
+      },
+      "put": {
+        "description": "Update `API` object by ID.\n",
+        "operationId": "putApis_id",
+        "parameters": [
+          {
+            "description": "id of api",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "the API spec in swagger json format",
+            "in": "body",
+            "name": "api",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update `API` object by ID.\n"
+      }
+    },
+    "/apis/{id}/app-status": {
+      "delete": {
+        "description": "remove `API` object app instance by ID.\n",
+        "operationId": "deleteApis_id_App-status",
+        "parameters": [
+          {
+            "description": "id of api",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "remove `API` object app instance by ID.\n"
+      },
+      "get": {
+        "description": "Gets `API` app status by ID.\n",
+        "operationId": "getApis_id_App-status",
+        "parameters": [
+          {
+            "description": "id of api",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "summary": "Gets `API` app status by ID.\n"
+      },
+      "put": {
+        "description": "Update `API` object app status by ID and restart app if need\n",
+        "operationId": "putApis_id_App-status",
+        "parameters": [
+          {
+            "description": "id of api",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "the API object in json",
+            "in": "body",
+            "name": "status",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/API"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response"
+          }
+        },
+        "summary": "Update `API` object app status by ID and restart app if need\n"
+      }
+    },
+    "/paths": {
+      "get": {
+        "description": "Get mock methods configuration \n",
+        "operationId": "getPaths",
+        "parameters": [
+          {
+            "description": "path id",
+            "in": "query",
+            "name": "id",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "api id",
+            "in": "query",
+            "name": "api-id",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/Path"
+              },
+              "type": "array"
+            }
+          }
+        },
+        "summary": "Get mock methods configuration \n"
+      }
+    },
+    "/paths/{id}": {
+      "get": {
+        "description": "Get mock path configuration by id\n",
+        "operationId": "getPaths_id",
+        "parameters": [
+          {
+            "description": "path id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Path"
+            }
+          }
+        },
+        "summary": "Get mock path configuration by id\n"
+      },
+      "put": {
+        "description": "Update mock method configuration by id\n",
+        "operationId": "putPaths_id",
+        "parameters": [
+          {
+            "description": "Path id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "Path content in json",
+            "in": "body",
+            "name": "method",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Path"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Path"
+            }
+          }
+        },
+        "summary": "Update mock method configuration by id\n"
+      }
+    }
+  },
+  "swagger": "2.0"
+}
